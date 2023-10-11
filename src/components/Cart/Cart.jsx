@@ -3,7 +3,7 @@ import { Modal } from "../UI/Modal";
 import classes from "./Cart.module.css";
 import CartContext from "../Context_Store/Cart-Context";
 import CartItem from "./CartItem";
-import { Checkout } from "./Checkout";
+import Checkout from "./Checkout";
 
 export const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
