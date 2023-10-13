@@ -28,7 +28,7 @@ const Checkout = (props) => {
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredStreetIsValid = !isEmpty(enteredStreet);
     const enteredCityIsValid = !isEmpty(enteredCity);
-    const enteredPostalCodeIsValid = !isEmpty(enteredPostalCode);
+    const enteredPostalCodeIsValid = isFiveChars(enteredPostalCode);
 
     setFormInputsValidity({
       name: enteredNameIsValid,
@@ -43,11 +43,16 @@ const Checkout = (props) => {
       enteredPostalCodeIsValid &&
       enteredStreetIsValid;
 
-    if (formIsValid) {
+    if (!formIsValid) {
       return;
     }
 
-    // submit car data
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
   };
 
   const nameControlClasses = `${classes.control} ${
